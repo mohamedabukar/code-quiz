@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+header {
+    padding: 40px;
+    text-align: center;
+    background: grey;
+    color: #fff;
+    border-bottom:30px #879274;
+  }
+  .large-font {
+    font-size: 3.5em;
+    text-align:center;
+  }
