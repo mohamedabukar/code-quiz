@@ -6,9 +6,14 @@ var choices = document.querySelector(".choices");
 
 var correctAnswersCounter = 0;
 var incorrectAnswersCounter = 0;
+var passed = false;
+var secondsLeft = 15;
 var timer;
 var timerCount;
 var index = 0;
+
+var timeEl = document.querySelector(".timer-count");
+
 var questions = [
     {
         question: "what is 1+1?",
@@ -32,23 +37,32 @@ function getCorrectAnswers() {
 }
 
 function startGame() {
-console.log(questions[index].question)
+    console.log(questions[index].question)
     quiz.textContent = questions[index].question;
-    for(var i = 0; i < questions[index].answers.length; i++){
-        //choices.textContent = questions[0].answers[i];
+    for (var i = 0; i < questions[index].answers.length; i++) {
+
         //create button for each answer
         var choiceBtn = document.createElement("BUTTON");
         //display each of the answers onto the button
         choiceBtn.textContent = questions[0].answers[i]
-        //append the button to choices div 
         choices.appendChild(choiceBtn)
-
-        //create click event to click on the answer
+        timer();
     }
 }
 
-function x (){
-    
+function timer() {
+    let timerInterval = setInterval(function () {
+        
+        timeEl.textContent = secondsLeft;
+        
+        if (secondsLeft === 0) {
+            clearInterval(timerInterval);
+            
+        } else {
+            secondsLeft--;
+            timeEl.textContent = secondsLeft;
+        }
+    }, 1000);
 }
 
 //when one of the choices is clicked
